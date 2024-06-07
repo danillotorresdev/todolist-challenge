@@ -35,24 +35,20 @@ module.exports = {
       name: "microfrontend1",
       filename: "remoteEntry.js",
       exposes: {
-        // expose each component
         "./app": "./src/App",
       },
       shared: {
         ...deps,
         react: {
           singleton: true,
-          // eager: true,
           requiredVersion: deps.react
         },
         'react-dom': {
           singleton: true,
-          // eager: true,
           requiredVersion: deps['react-dom'],
         },
         "react-router-dom": {
           singleton: true,
-          // eager: true,
           requiredVersion: deps["react-router-dom"],
         },
       },

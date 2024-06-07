@@ -4,7 +4,7 @@ import App from "./App";
 
 export const PlaygroundContainer = () => {
   return (
-    <Box textAlign={"center"} bg={"gray.300"} minH={"100vh"}>
+    <Box textAlign={"center"}>
       <Box
         my={5}
         p={4}
@@ -15,17 +15,15 @@ export const PlaygroundContainer = () => {
       >
         <Text>
           This is the isolated development playground for{" "}
-          <Code>microfrontend1</Code> acting as the host app.
+          <Code>microfrontend1</Code>, serving as the host app.
         </Text>
         <Text>
-          The JS bundle is available for consumption at{" "}
-          <Code>/remoteEntry.js</Code>
+          The JavaScript bundle is available for consumption at{" "}
+          <Code>/remoteEntry.js</Code>.
         </Text>
       </Box>
 
-      <Box bg={"white"} shadow={"lg"} rounded={"lg"} mx={"300px"} my={5}>
-        <App />
-      </Box>
+      <App />
     </Box>
   );
 };
