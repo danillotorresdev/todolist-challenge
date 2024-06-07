@@ -1,58 +1,66 @@
-import { FunctionComponent, ReactElement } from "react";
 import {
-  Text,
-  Button,
   Box,
-  Code,
-  Tooltip,
+  Button,
+  Heading,
   Link,
-  useDisclosure,
   Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalCloseButton,
   ModalBody,
+  ModalCloseButton,
+  ModalContent,
   ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  Text,
+  useColorMode,
+  useDisclosure,
 } from "@chakra-ui/react";
+import { Link as RouterLink } from "react-router-dom";
 
-export const Home = () => {
+export const Home: React.FC = () => {
+  const { colorMode } = useColorMode();
   const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
-    <Box>
-      <Text my={10}>
-        Edit <Code>src/pages/Home.tsx</Code> and save to reload.{" "}
-        <Link
-          color="teal.500"
-          href="https://chakra-ui.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn Chakra
-        </Link>
+    <Box p={8}>
+      <Heading as="h1" mb={8} textAlign="center">
+        Welcome to the Parent Application
+      </Heading>
+      <Text fontSize="xl" textAlign="center" mb={8}>
+        This is a testing environment to demonstrate the integration of the
+        TodoList microfrontend.
       </Text>
-
-      <Tooltip label="This will open a modal" placement="top">
-        <Button onClick={onOpen}>Click this button</Button>
-      </Tooltip>
-
+      <Box textAlign="center">
+        <Button as={RouterLink} to="/todoApp" colorScheme="teal" mr={4}>
+          Go to To-do App
+        </Button>
+        <Button
+          colorScheme={colorMode === "light" ? "teal" : "blue"}
+          onClick={onOpen}
+        >
+          About
+        </Button>
+      </Box>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Example Modal</ModalHeader>
+          <ModalHeader>About</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <Text>
-              Here&apos;s a Chakra UI modal. You can close it by clicking
-              &quot;Close&quot;
+              This is a simple parent application built using React and Chakra
+              UI. It serves as a testing environment to demonstrate the
+              integration of microfrontends, specifically the TodoList
+              microfrontend.
+            </Text>
+            <Text mt={4}>
+              Clicking the "Go to TodoList" button will take you to the TodoList
+              microfrontend, where you can manage your todo items.
             </Text>
           </ModalBody>
-
           <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={onClose}>
+            <Button colorScheme="teal" onClick={onClose}>
               Close
             </Button>
-            <Button variant="ghost">Secondary Action</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

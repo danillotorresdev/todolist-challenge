@@ -1,3 +1,4 @@
+import { Box, Heading } from "@chakra-ui/react";
 import { Component, ErrorInfo, ReactNode } from "react";
 
 type Props = {
@@ -24,7 +25,14 @@ export class ErrorBoundary extends Component<Props, State> {
 
   render() {
     if (this.state.hasError) {
-      return <h1>Something went wrong.</h1>;
+      return (
+        <Box textAlign="center" mt={8}>
+          <Heading size="lg" >
+            Oops! Something went wrong.
+          </Heading>
+          <p>Please try refreshing the page or come back later.</p>
+        </Box>
+      );
     }
 
     return this.props.children;

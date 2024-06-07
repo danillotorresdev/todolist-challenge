@@ -1,8 +1,8 @@
-import { Text } from '@chakra-ui/react'
+import { Text, Center } from '@chakra-ui/react'
 
 export const NotFound = () => (
-  <>
-    <Text fontSize={'2xl'}>404</Text>
-    <Text>Page not found.</Text>
-  </>
+  <Center flexDirection="column" h="100vh">
+    <Text fontSize={'4xl'} fontWeight="bold" mb={4}>404</Text>
+    <Text fontSize={'xl'}>Page not found.</Text>
+  </Center>
 )
